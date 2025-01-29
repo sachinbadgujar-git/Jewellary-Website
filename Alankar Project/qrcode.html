@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code with Centered A</title>
+    <a href="./index.html"></a>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .qr-container {
+            display: inline-block;
+            position: relative;
+            background: white;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        .qr-container canvas {
+            display: block;
+        }
+        .qr-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 32px;
+            font-weight: bold;
+            color: black;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>QR Code Generator</h1>
+    <div class="qr-container">
+        <div id="qrcode"></div>
+        <div class="qr-overlay">A</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+        // Data for the QR code
+        const data = "https://example.com";
+
+        // Generate the QR code
+        const qrCodeContainer = document.getElementById("qrcode");
+        QRCode.toCanvas(data, { width: 200, margin: 1 }, (error, canvas) => {
+            if (error) {
+                console.error(error);
+            } else {
+                qrCodeContainer.appendChild(canvas);
+            }
+        });
+    </script>
+</body>
+</html>
